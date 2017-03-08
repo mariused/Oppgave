@@ -10,7 +10,7 @@ class SessionsController extends Controller
 {
 	public function __construct() 
 	{
-		$this->middleware('guest', ['except' => 'destroy']);
+		$this->middleware('guest', ['except' => ['destroy', 'update', 'edit']]);
 	}
 	
     public function create() 
@@ -55,13 +55,36 @@ class SessionsController extends Controller
 			]);
 		}
 		
+		/*
 		$user = \App\User::where('email', request('email'))
 		->where('password', request('password'))
 		->first();
-		
+		*/
 	
 		
 		//\Auth::login($user);
 		return redirect('/admin');
+	}
+	
+	public function edit() 
+	{
+		
+		return view('admin.change');  
+	}
+	
+	public function update() 
+	{
+		$user = \Auth::user();
+		
+		$this->validate(request(), [
+			'password' => 'required|min:6',
+			'password_confirmation' => 'required|min:6'
+		]);
+		
+        $user->password = bcrypt(request('password'));
+	
+		$user->save();
+		
+		return redirect('/admin'); 
 	}
 }

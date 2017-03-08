@@ -20,8 +20,6 @@
 				<?php for($i = 0; $i<count($articles); $i++): ?>
 					<?php
 						$url = $articles[$i]->url;
-						//parse_url( $url, PHP_URL_QUERY );
-						//echo $my_array_of_vars['v'];
 						if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)){
 							$video_id = $match[1];
 						}

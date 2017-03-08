@@ -21,6 +21,7 @@
 			</ul>
 		<?php else: ?>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/register/create">Registrer bruker</a></li>
 				<li><a href="/login">Logg inn</a></li>
 			</ul>
 		<?php endif; ?>

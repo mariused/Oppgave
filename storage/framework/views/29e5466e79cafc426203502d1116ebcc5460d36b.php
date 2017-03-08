@@ -4,6 +4,9 @@
 <h4>Funksjoner for admin:</h4>
 <form>
 	<div class="form-group">
+		<a href="/admin/change" class="btn btn-default" role="button">Endre passord</a>
+	</div>
+	<div class="form-group">
 		<a href="/video/create" class="btn btn-default" role="button">Legg til video</a>
 	</div>
 	<div class="form-group">

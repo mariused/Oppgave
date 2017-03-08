@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/about', function () {
+	$articles = \App\Article::paginate(10);
+	
+		return view('about', compact('articles'));
+}); 
 
-// category controllers
+// Category Controllers
 //-------------------------------------------------------------------
 Route::post('/kategori/{id}', 'CategoryController@update');
 
@@ -26,7 +30,7 @@ Route::post('/kategori', 'CategoryController@store');
 Route::get('/kategori/create', 'CategoryController@create');
 //-------------------------------------------------------------------
 
-//video controllers
+//Video Controllers
 //-------------------------------------------------------------------
 Route::get('/video/create', 'VideoController@create');
 
@@ -42,14 +46,7 @@ Route::get('/video/{id}/delete', 'VideoController@destroy');
 
 Route::post('/video/{id}', 'VideoController@update');
 //-------------------------------------------------------------------
-/*
-Route::get('/', function () {
-	
-	
-	$articles = App\Article::all();
-	
-    return view('welcome', compact('articles'));
-})->name('home'); */
+
 
 //Login and Logout
 //-------------------------------------------------------------------
@@ -58,7 +55,21 @@ Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 
 Route::get('/logout', 'SessionsController@destroy');
+
+
+//User/admin related
 //-------------------------------------------------------------------
+Route::get('/admin', 'AdminController@index');
+
+Route::get('/admin/change', 'SessionsController@edit');
+
+Route::post('/admin', 'SessionsController@update');
+
+Route::get('/register/create', 'AdminController@create');
+
+Route::post('/register', 'AdminController@store');
+//-------------------------------------------------------------------
+
 
 // Password Reset
 //-------------------------------------------------------------------
