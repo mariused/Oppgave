@@ -62,6 +62,6 @@ class SessionsController extends Controller
 	
 		
 		//\Auth::login($user);
-		return redirect('/');
+		return redirect('/admin');
 	}
 }
